@@ -26,7 +26,9 @@ client.on('message', msg => {
       break;
       //handles invalid commands:
       default:
-        msg.channel.send('Sorry, I don\'t recognize that command. If you need help, try \"c!help.\"');
+        msg.channel.send('Sorry, I don\'t recognize that command. If you need help, try \"c!help.\"')
+          .then(message => autoDelete(message))
+          .catch(console.error);
       break;
       //plays rock paper scissors:
       case 'rps':
