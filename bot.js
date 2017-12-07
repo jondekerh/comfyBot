@@ -4,6 +4,10 @@ const auth = require('./auth.json');
 const comfyArr = require('./comfyArr.json');
 var callOut = "c!";
 
+function autoDelete(msg) {
+  msg.delete(5000);
+}
+
 client.on('ready', () => {
   console.log(`${client.user.tag} is ready to serve!`);
 });
@@ -26,7 +30,9 @@ client.on('message', msg => {
       break;
       //handles invalid commands:
       default:
-        msg.channel.send('Sorry, I don\'t recognize that command. If you need help, try \"c!help.\"');
+        msg.channel.send('Sorry, I don\'t recognize that command. If you need help, try \"c!help.\"')
+          .then(message => autoDelete(message))
+          .catch(console.error);
       break;
       //plays rock paper scissors:
       case 'rps':
