@@ -4,6 +4,10 @@ const auth = require('./auth.json');
 const comfyArr = require('./comfyArr.json');
 var callOut = "c!";
 
+function autoDelete(msg) {
+  msg.delete(5000);
+}
+
 client.on('ready', () => {
   console.log(`${client.user.tag} is ready to serve!`);
 });
