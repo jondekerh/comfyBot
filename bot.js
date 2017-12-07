@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const auth = require('./auth.json');
 const comfyArr = require('./comfyArr.json');
+const rps = require('./minigames/rps.js');
 var callOut = "c!";
 
 function autoDelete(msg) {
@@ -36,40 +37,8 @@ client.on('message', msg => {
       break;
       //plays rock paper scissors:
       case 'rps':
-        //this is way too big and clutters up the doc. move into its own seperte dir. comfyBot/games/rps.js? json?
-        var p1 = argsArr[1].toLowerCase();
-        var rpsArr = [
-          'rock',
-          'paper',
-          'scissors'
-        ];
-        var randomRps = Math.floor(Math.random()*rpsArr.length);
-        var p2 = rpsArr[randomRps];
-        msg.channel.send('You picked ' + p1 + '!\ncomfyBot picked ' + p2 + '!');
-         function rpsCompare(p1, p2) {
-          if (p1 === p2) {
-            msg.channel.send('tie');
-          };
-          if (p1 === 'rock' && p2 === 'scissors') {
-            msg.channel.send('p1 w/ rock wins');
-          }
-          else if (p1 === 'rock' && p2 === 'paper') {
-            msg.channel.send('p2 w/ paper wins');
-          };
-          if (p1 === 'paper' && p2 === 'rock') {
-            msg.channel.send('p1 w/ paper wins');
-          }
-          else if (p1 === 'paper' && p2 === 'scissors') {
-            msg.channel.send('p2 w/ scissors wins');
-          };
-          if (p1 === 'scissors' && p2 === 'paper') {
-            msg.channel.send('p1 w/ scissors wins');
-          }
-          else if ( p1 === 'scissors' && p2 === 'rock') {
-            msg.channel.send('p2 w/ rock  wins');
-          };
-        };
-        rpsCompare(p1, p2);
+        var p1 = argsArr[1];
+        rps.rpsCompare(p1, msg);
       break;
       //says hi & tags user (NOT WORKING):
       case 'test':
