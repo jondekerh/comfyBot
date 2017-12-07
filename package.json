@@ -1,0 +1,17 @@
+{
+  "name": "comfyBot",
+  "version": "1.0.0",
+  "description": "Bot made for the comfy server.",
+  "main": "bot.js",
+  "author": "Jon",
+  "dependencies": {
+    "bufferutil": "^3.0.3",
+    "discord.js": "^11.2.1",
+    "erlpack": "github:hammerandchisel/erlpack",
+    "libsodium": "^0.7.2",
+    "libsodium-wrappers": "^0.5.4",
+    "node-opus": "^0.2.7",
+    "opusscript": "0.0.3",
+    "uws": "^0.14.5"
+  }
+}
