@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const auth = require('./auth.json');
-const comfyArr = require('./comfyArr.json');
+const comfyArr = require('./comfyArr.js');
 const rps = require('./minigames/rps.js');
 var callOut = "c!";
 
@@ -22,27 +22,26 @@ client.on('message', msg => {
     switch(argsArr[0]) {
       //command list:
       case 'help':
-        msg.channel.send('I respond to the following commands:\n**c!comfy** - this notifies me that you need comfort.');
+        msg.channel.send('I respond to the following commands:\nc!comfy, c!rps [rock/paper/scissors]');
       break;
       //gives user a random uplifting message:
       case 'comfy':
-        var randomComfy = Math.floor(Math.random()*comfyArr.length);
-        msg.reply(comfyArr[randomComfy]);
-      break;
-      //handles invalid commands:
-      default:
-        msg.channel.send('Sorry, I don\'t recognize that command. If you need help, try \"c!help.\"')
-          .then(message => autoDelete(message))
-          .catch(console.error);
+        comfyArr.comfyFunc(msg);
       break;
       //plays rock paper scissors:
       case 'rps':
         var p1 = argsArr[1];
         rps.rpsCompare(p1, msg);
       break;
-      //says hi & tags user (NOT WORKING):
+      //says hi & tags user (no longer needed, feel free to replace):
       case 'test':
-        msg.channel.send('hi, ' + msg.author.username);
+        msg.channel.send('hi, ' + msg.author);
+      break;
+      //handles invalid commands:
+      default:
+        msg.channel.send('Sorry, I don\'t recognize that command. If you need help, try \"c!help.\"')
+          .then(message => autoDelete(message))
+          .catch(console.error);
       break;
     }
   }
