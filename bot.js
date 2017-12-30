@@ -24,7 +24,7 @@ client.on('message', msg => {
     switch(argsArr[0]) {
       //command list:
       case 'help':
-        msg.channel.send('I respond to the following commands:\nc!comfy, c!rps [rock/paper/scissors]');
+        msg.channel.send('```I respond to the following commands:\nc!comfy, c!rps [rock/paper/scissors]\nc!chat [your message here]```');
       break;
       //gives user a random uplifting message:
       case 'comfy':
