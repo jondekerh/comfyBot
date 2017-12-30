@@ -36,7 +36,7 @@ client.on('message', msg => {
         var p1 = argsArr[1];
         rps.rpsCompare(p1, msg);
       break;
-      //attempts to "chat" with the user using third party service:
+      //attempts to "chat" with the user using ai-chatbot-framework (https://github.com/alfredfrancis/ai-chatbot-framework):
       case 'chat':
         chat.chatRequest(cleanMsg, request, msg);
      break;
