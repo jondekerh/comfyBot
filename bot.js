@@ -23,6 +23,7 @@ client.on('message', msg => {
 
     switch(argsArr[0]) {
       //command list:
+      //currently newline using \n isn't producing desired effect. Minor bug.
       case 'help':
         msg.channel.send('```I respond to the following commands:\nc!comfy, c!rps [rock/paper/scissors]\nc!chat [your message here]```');
       break;
@@ -37,21 +38,7 @@ client.on('message', msg => {
       break;
       //attempts to "chat" with the user using third party service:
       case 'chat':
-        var userInput= cleanMsg.substring(7);
-        var payload = {
-          "currentNode": "",
-          "complete": null,
-          "context":{},
-          "parameters": [],
-          "extractedParameters": {},
-          "speechResponse": "",
-          "intent": {},
-          "input": '',
-          "missingParameters": []
-        };
-        payload["input"] = userInput;
-        
-        chat.chatRequest(request, payload, msg);
+        chat.chatRequest(cleanMsg, request, msg);
      break;
       //says hi & tags user (no longer needed, feel free to replace):
       case 'test':
