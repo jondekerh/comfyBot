@@ -39,7 +39,7 @@ client.on('message', msg => {
       //attempts to "chat" with the user using third party service:
       case 'chat':
         chat.chatRequest(cleanMsg, request, msg);
-     break;
+      break;
       //says hi & tags user (no longer needed, feel free to replace):
       case 'test':
         msg.channel.send('hi, ' + msg.author);
