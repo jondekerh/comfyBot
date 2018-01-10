@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const auth = require('./auth.json');
-const comfyArr = require('./comfyArr.js');
+const comfyArr = require('./arrays/comfyArr.js');
 const rps = require('./minigames/rps.js');
 const chat = require('./chat.js');
 const request = require('request');

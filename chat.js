@@ -1,3 +1,7 @@
+const wassup = require('./arrays/wassupArr.js');
+const howru = require('./arrays/howruArr.js');
+const jokes = require('./arrays/jokesArr.js');
+
 //code for making http requests to the chat API service and posting a response in chat:
 module.exports = {
   chatRequest: function (cleanMsg, request, msg) {
@@ -30,7 +34,8 @@ module.exports = {
 
       var story = body.intent.storyId;
       var sResponse = body.speechResponse;
-
+      
+      //allows a unique tag to tag the user in JSON response
       if (sResponse.indexOf('#usrName#') != -1) {
         var splitResArr = sResponse.split(' ');
         var usrNameIndex = splitResArr.indexOf('#usrName#');
@@ -49,19 +54,29 @@ module.exports = {
                 console.log(err);
               } 
               else {
-              obj = JSON.parse(data); //now it an object
-              obj.Arr.push(body.input); //add some data
-              json = JSON.stringify(obj); //convert it back to json
+              var obj = JSON.parse(data); //make it an object
+              obj.Arr.push(body.input); //add another item to the array
+              var json = JSON.stringify(obj); //convert it back to json
               fs.writeFile('unindexed_inputs.json', json, 'utf8', (err) => {if(err){console.log(err)}}); //write it back
               }
             });
             msg.channel.send(sResponse);
           break;
+          //for "what's up" story
+          case '5a544d2622d3a7003abd4289':
+            wassup.wassupFunc(msg);
+          break;
+          case '5a54587d22d3a7003abd4302':
+            howru.howruFunc(msg);
+          break;
+          case '5a55cb1022d3a7003abd48a2':
+            jokes.jokesFunc(msg);
+          break;
           default:
             msg.channel.send(sResponse);
           break;
         }
-      };
+      }
     });
   }
 };
