@@ -54,11 +54,6 @@ client.on('message', msg => {
       break;
     }
   };
-
-  //logging function so Matt can't delete Dyno logs and pretend he isn't deleting my messages :angery:
-  if (msg.channel.id == 405145137094852609) {
-    console.log(msg.content + ' ' + msg.createdAt);
-  };
 });
 
 
