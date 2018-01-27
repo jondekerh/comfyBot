@@ -16,6 +16,8 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
+ 
+  //main function which checks for the callout   
   if (msg.content.substring(0, 2) == callOut) {
     //the msg is made into a clean string, then each word after the callout becomes an index in the array argsArr.
     var cleanMsg = msg.cleanContent;
@@ -51,7 +53,13 @@ client.on('message', msg => {
           .catch(console.error);
       break;
     }
-  }
+  };
+
+  //logging function so Matt can't delete Dyno logs and pretend he isn't deleting my messages :angery:
+  if (msg.channel.position == 0) {
+    console.log(msg.content + ' ' + msg.createdAt);
+  };
 });
+
 
 client.login(auth.token);
